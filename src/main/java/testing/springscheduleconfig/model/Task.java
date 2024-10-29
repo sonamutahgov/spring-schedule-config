@@ -1,4 +1,4 @@
-package testing.springscheduleconfig.json;
+package testing.springscheduleconfig.model;
 
 public final class Task {
     private String name;

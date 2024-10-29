@@ -1,6 +1,4 @@
-package testing.springscheduleconfig;
-
-import testing.springscheduleconfig.json.Task;
+package testing.springscheduleconfig.model;
 
 import java.util.Arrays;
 

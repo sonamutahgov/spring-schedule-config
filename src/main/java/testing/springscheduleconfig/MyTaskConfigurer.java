@@ -12,6 +12,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
+import testing.springscheduleconfig.model.TaskConfig;
 
 import java.io.IOException;
 import java.time.Duration;

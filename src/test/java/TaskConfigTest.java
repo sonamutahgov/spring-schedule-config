@@ -1,8 +1,8 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import testing.springscheduleconfig.TaskConfig;
-import testing.springscheduleconfig.json.DayTimes;
-import testing.springscheduleconfig.json.RunsOn;
+import testing.springscheduleconfig.model.TaskConfig;
+import testing.springscheduleconfig.model.DayTimes;
+import testing.springscheduleconfig.model.RunsOn;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

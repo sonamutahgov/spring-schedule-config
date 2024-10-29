@@ -1,7 +1,6 @@
-package testing.springscheduleconfig.json;
+package testing.springscheduleconfig.model;
 
 import java.time.Month;
-import java.time.MonthDay;
 import java.util.Arrays;
 
 public final class DateOfMonth {
