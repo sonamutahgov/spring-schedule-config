@@ -1,5 +1,8 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import testing.springscheduleconfig.compare.GroupComparator;
+import testing.springscheduleconfig.compare.OrderComparator;
+import testing.springscheduleconfig.model.Task;
 import testing.springscheduleconfig.model.TaskConfig;
 import testing.springscheduleconfig.model.DayTimes;
 import testing.springscheduleconfig.model.RunsOn;
@@ -14,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -40,6 +43,27 @@ public class TaskConfigTest {
         try {
             TaskConfig taskConfig = getTaskConfig();
             LOG.info("taskConfig: {}", taskConfig);
+            //taskConfig stores all tasks as an array
+
+            assertThat(taskConfig.getTasks().length).isEqualTo(6);
+
+            //getTaskGroup will 'group' the tasks by their 'group-name' and put them in 'order' for tasks in each group
+            /*
+            example:
+            'group-a' : task-1 (order=1), task-2(order=2)
+             'group-b' : task-3 (order=1)
+             */
+            Map<String, List<Task>> map = getTaskGroup(taskConfig);
+            List<String> groupKeySet = new ArrayList<>(map.keySet());
+            Collections.sort(groupKeySet);
+
+            groupKeySet.forEach(group -> {
+                LOG.info("group: {}", group);
+
+                map.get(group).forEach(task -> {
+                    LOG.info("task: {}", task);
+                });
+            });
 
             Arrays.stream(taskConfig.getTasks()).sequential().forEach(task -> {
                 LOG.info("task: {}", task.getRunsOn().getTime().format(DateTimeFormatter.ofPattern("hh mm ss a")));
@@ -55,6 +79,30 @@ public class TaskConfigTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         return objectMapper.readValue(taskConfigJson.getFile(), TaskConfig.class);
+    }
+
+    private Map<String, List<Task>> getTaskGroup(TaskConfig taskConfig) {
+        List<Task> taskList = Arrays.asList(taskConfig.getTasks());
+        taskList.sort(new GroupComparator());
+
+        Map<String, List<Task>> map = new HashMap<>();
+
+        taskList.forEach(task -> {
+            if (map.containsKey(task.getGroup())) {
+                List<Task> mapTaskList = map.get(task.getGroup());
+                mapTaskList.add(task);
+                mapTaskList.sort(new OrderComparator());
+            }
+            else {
+                LOG.info("create a linked list node with for new group");
+                List<Task> linkedList = new LinkedList<>();
+                linkedList.add(task);
+
+                map.put(task.getGroup(), linkedList);
+            }
+        });
+
+        return map;
     }
 
 

@@ -1,62 +1,79 @@
 {
-  "tasks": [{
+  "tasks": [
+    {
     "name": "task-a",
+    "group": "group-a",
+    "order": 1,
     "runsOn": {
       "time": "21:12:12",
       "dayTimes": [
-        {
-          "day": "MONDAY",
-          "time": "07:20:05"
-        },
-        {
-          "day": "TUESDAY",
-          "time": "12:54:12"
-        },
-        {
-          "day": "WEDNESDAY",
-          "time": "17:12:06"
-        },
-        {
-          "day": "THURSDAY"
-        }
+        {"day": "MONDAY", "time": "07:20:05"},
+        {"day": "TUESDAY", "time": "12:54:12"},
+        {"day": "WEDNESDAY", "time": "17:12:06"},
+        { "day": "THURSDAY" }
       ],
       "dateOfMonth": {
-        "monthDay": [
-          1,
-          2,
-          3,
-          5,
-          7,
-          25
-        ],
-        "month": [
-          "JANUARY",
-          "FEBRUARY",
-          "DECEMBER"
-        ]
+        "monthDay": [1, 2, 3, 5, 7, 25],
+        "month": ["JANUARY", "FEBRUARY", "DECEMBER"]
       },
-      "fixedRate": {
-        "days": 5,
-        "seconds": 3
-      }
+      "fixedRate": {"days": 5, "seconds": 3}
     }
   },
     {
+      "name": "call eligibility api task",
+      "group": "group-a",
+      "order": 5,
+      "runsOn": {
+        "time": "21:12:12",
+        "dayTimes": [
+          {"day": "MONDAY", "time": "07:20:05"}
+        ],
+        "dateOfMonth": {
+          "monthDay": [28, 5],
+          "month": ["APRIL", "JULY", "DECEMBER"]
+        },
+        "fixedRate": {"seconds": 10}
+      }
+    },
+    {
       "name": "task-b",
+      "group": "group-a",
+      "order": 2,
       "runsOn": {
         "time": "01:01:12",
+        "dayTimes": [
+          { "day": "MONDAY", "time": "07:20:05" },
+          { "day": "TUESDAY", "time": "12:54:12" },
+          { "day": "WEDNESDAY", "time": "17:12:06" },
+          { "day": "THURSDAY" }
+        ],
+        "fixedRate": { "hours": 24, "seconds": 10 }
+      }
+    },
+    {
+      "name": "task-c",
+      "group": "group-b",
+      "order": 1,
+      "runsOn": {
+        "time": "01:01:12",
+        "dayTimes": [ {"day": "MONDAY", "time": "07:20:05"},
+          { "day": "TUESDAY", "time": "12:54:12" },
+          { "day": "WEDNESDAY",  "time": "17:12:06" },
+          { "day": "THURSDAY" }
+        ],
+        "fixedRate": { "hours": 24, "seconds": 10}
+      }
+    },
+    {
+      "name": "task-d",
+      "group": "group-b",
+      "order": 2,
+      "runsOn": {
+        "time": "12:11:50",
         "dayTimes": [
           {
             "day": "MONDAY",
             "time": "07:20:05"
-          },
-          {
-            "day": "TUESDAY",
-            "time": "12:54:12"
-          },
-          {
-            "day": "WEDNESDAY",
-            "time": "17:12:06"
           },
           {
             "day": "THURSDAY"
@@ -65,8 +82,19 @@
         "fixedRate": {
           "hours": 24,
           "seconds": 10
-
         }
+      }
+    },
+    {
+      "name": "task-e",
+      "group": "group-c",
+      "order": 1,
+      "runsOn": {
+        "time": "10:20:52",
+        "dayTimes": [
+          { "day": "SATURDAY", "time": "14:22:15" }
+        ],
+        "fixedRate": { "hours": 24, "seconds": 10 }
       }
     }
   ]
