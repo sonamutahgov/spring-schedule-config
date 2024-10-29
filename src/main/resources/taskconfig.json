@@ -1,0 +1,73 @@
+{
+  "tasks": [{
+    "name": "task-a",
+    "runsOn": {
+      "time": "21:12:12",
+      "dayTimes": [
+        {
+          "day": "MONDAY",
+          "time": "07:20:05"
+        },
+        {
+          "day": "TUESDAY",
+          "time": "12:54:12"
+        },
+        {
+          "day": "WEDNESDAY",
+          "time": "17:12:06"
+        },
+        {
+          "day": "THURSDAY"
+        }
+      ],
+      "dateOfMonth": {
+        "monthDay": [
+          1,
+          2,
+          3,
+          5,
+          7,
+          25
+        ],
+        "month": [
+          "JANUARY",
+          "FEBRUARY",
+          "DECEMBER"
+        ]
+      },
+      "fixedRate": {
+        "days": 5,
+        "seconds": 3
+      }
+    }
+  },
+    {
+      "name": "task-b",
+      "runsOn": {
+        "time": "01:01:12",
+        "dayTimes": [
+          {
+            "day": "MONDAY",
+            "time": "07:20:05"
+          },
+          {
+            "day": "TUESDAY",
+            "time": "12:54:12"
+          },
+          {
+            "day": "WEDNESDAY",
+            "time": "17:12:06"
+          },
+          {
+            "day": "THURSDAY"
+          }
+        ],
+        "fixedRate": {
+          "hours": 24,
+          "seconds": 10
+
+        }
+      }
+    }
+  ]
+}

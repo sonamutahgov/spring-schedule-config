@@ -1,0 +1,30 @@
+{
+  "time": "01:01:12",
+  "dayTimes": [
+    {
+      "day": "MONDAY",
+      "time": "07:20:05"
+    },
+    {
+      "day": "TUESDAY",
+      "time": "12:54:12"
+    },
+    {
+      "day": "WEDNESDAY",
+      "time": "17:12:06"
+    },
+    {
+      "day": "THURSDAY"
+    }
+  ],
+  "dateOfMonth": {
+    "monthDay": [
+      1,2
+    ],
+    "month": [
+      "JANUARY",
+      "FEBRUARY",
+      "DECEMBER"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "dayTimes": [
+    {
+      "day": "MONDAY",
+      "time": "03:12:01"
+    },
+    {
+      "day": "TUESDAY",
+      "time": "03:12:10"
+    },
+    {
+      "day": "FRIDAY"
+    }
+  ]
+}
