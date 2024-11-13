@@ -1,0 +1,9 @@
+ <div th:each="key: ${*taskMap.keySet()}"    "task: *{tasks}">
+
+                                            <select class="form-select" aria-label="Default select example" name="tasks" id="tasks">
+                                                <option value="None">None</option>
+                                                <option th:selected="${task == 'Eligibility Job'}" value="Eligibility Job">Eligibility job</option>
+                                                <option th:selected="${task == 'Rules Job'}" value="Rules Job">Rules Job</option>
+                                                <option th:selected="${task == 'Print Hello Job'}" value="Print Hello Job">Print Hello Job</option>
+                                            </select>
+                                        </div>

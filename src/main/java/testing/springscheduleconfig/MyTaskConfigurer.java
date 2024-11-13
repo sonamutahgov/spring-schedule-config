@@ -49,7 +49,7 @@ public class MyTaskConfigurer {
         };
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void scheduleTasks() {
         LOG.info("scheduling tasks");
         try {
