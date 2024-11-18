@@ -82,8 +82,9 @@
                             </div>
                             <div class="col-sm">
                                 <div th:if="${job.running}" class="spinner-border" role="status">
-                                    <span class="visually-hidden">running..</span>
+                                    <span th:text="${job.running}" class="visually-hidden">running..</span>
                                 </div>
+
 
                             </div>
                         </div>

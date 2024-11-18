@@ -301,10 +301,12 @@ public class Job implements Runnable {
     public void run() {
         this.running = true;
 
+        LOG.info("task.size: {}, taskMap: {}", taskMap.size(), taskMap);
+
         for(Map.Entry<Integer, String> task: taskMap.entrySet()) {
             try {
-                LOG.info("running task.id {} task.value: {}",id, task.getKey(), task.getValue());
-                Thread.sleep(60000);
+                LOG.info("running task.id {} task.value: {}",id, task.getKey(), taskMap.get(task.getKey()));
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 LOG.error("error in sleeping for 60 seconds");
             }
