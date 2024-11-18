@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
-public class Job implements Runnable {
+public class Job {
     private String id;
     private String name;
     private String second;
@@ -297,22 +297,4 @@ public class Job implements Runnable {
                 '}';
     }
 
-    @Override
-    public void run() {
-        this.running = true;
-
-        LOG.info("task.size: {}, taskMap: {}", taskMap.size(), taskMap);
-
-        for(Map.Entry<Integer, String> task: taskMap.entrySet()) {
-            try {
-                LOG.info("running task.id {} task.value: {}",id, task.getKey(), taskMap.get(task.getKey()));
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                LOG.error("error in sleeping for 60 seconds");
-            }
-            LOG.info("task.id: {} task.value: '{}' is done",task.getKey(), task.getValue());
-        }
-        LOG.info("done running job, set running to false");
-        this.running = false;
-    }
 }

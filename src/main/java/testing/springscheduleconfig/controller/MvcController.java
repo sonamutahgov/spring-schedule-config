@@ -41,7 +41,7 @@ public class MvcController {
 
     @GetMapping("jobs")
     public Mono<String> getJobs(Model model) {
-        LOG.info("return scheduled jobs");
+        //LOG.info("return scheduled jobs");
         final String PATH = "jobs";
 
         model.addAttribute("jobs", jobMap.values());
@@ -61,7 +61,7 @@ public class MvcController {
 
     @GetMapping("/{id}")
     public Mono<String> getJobPage(@PathVariable("id") String id, Model model) {
-        LOG.info("get job by id: {}", id);
+        LOG.debug("get job by id: {}", id);
 
         final String PATH = "addjob";
 
@@ -106,7 +106,11 @@ public class MvcController {
 
         CronTrigger cronTrigger = new CronTrigger(cronExpression);
 
-        taskScheduler.schedule(job, cronTrigger);
+        JobRunner jobRunner = new JobRunner(job);
+
+        taskScheduler.schedule(jobRunner, cronTrigger);
+
+
 
     }
 

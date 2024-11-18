@@ -2,3 +2,7 @@ spring:
   devtools:
     restart:
       enabled: true
+
+logging:
+  level:
+    testing.springscheduleconfig: INFO

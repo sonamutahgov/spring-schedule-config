@@ -2,6 +2,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import testing.springscheduleconfig.compare.GroupComparator;
 import testing.springscheduleconfig.compare.OrderComparator;
+import testing.springscheduleconfig.controller.Job;
 import testing.springscheduleconfig.model.Task;
 import testing.springscheduleconfig.model.TaskConfig;
 import testing.springscheduleconfig.model.DayTimes;
@@ -153,5 +154,28 @@ public class TaskConfigTest {
         objectMapper.registerModule(new JavaTimeModule());
 
         return objectMapper.readValue(file, RunsOn.class);
+    }
+
+    @Test
+    public void testTaskMap() {
+        Job job = new Job();
+        //Map<Integer, String> taskMap = new HashMap<>();
+        HashMap<Integer, String> taskMap = new HashMap<>();
+        taskMap.put(0, "Print Hello Job");
+        job.setId("1");
+        job.setTaskMap(taskMap);
+        LOG.info("task.size: {}, taskMap: {}", job.getTaskMap().size(), job.getTaskMap());
+
+        for(Map.Entry<Integer, String> task: job.getTaskMap().entrySet()) {
+            try {
+                LOG.info("running task.id {} task.value: {}", job.getId(), task.getKey(), job.getTaskMap().get(task.getKey()));
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                LOG.error("error in sleeping for 60 seconds");
+            }
+            LOG.info("task.id: {} task.value: '{}' is done",task.getKey(), task.getValue());
+        }
+        LOG.info("done running job, set running to false");
+
     }
 }
