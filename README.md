@@ -6,7 +6,7 @@ You can run this by running the `SchedulingTasksApplication` class in the projec
 This is a poc for demonstrating how a "job" can be configured and scheduled using Spring Scheduler as tasks.
 
 
-The following is the `addjob` screen: ![addjob](images/addjob.png)
+The following is the `addjob` screen: ![addjob](images/addjob.png).  A job can have multiple tasks to run.  The task have to be predefined.
 
 The following is the `jobs` screen: ![listjob](images/listjobs.png)
 
